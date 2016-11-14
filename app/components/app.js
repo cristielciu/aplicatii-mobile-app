@@ -4,12 +4,15 @@ import {
   Text,
   View
 } from 'react-native';
+import { createStore, applyMiddleware } from 'redux';
+import reducers from '../reducers';
+const createStoreWithMiddleware = applyMiddleware()(createStore);
 
 
 export default class App extends Component {
   render () {
     return (
-        <ProductList />
+        <ProductList store={createStoreWithMiddleware(reducers)}/>
     )
   }
 }
