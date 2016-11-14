@@ -12,7 +12,9 @@ const createStoreWithMiddleware = applyMiddleware()(createStore);
 export default class App extends Component {
   render () {
     return (
+      <View style={{backgroundColor: 'powderblue', flex: 1}}>
         <ProductList store={createStoreWithMiddleware(reducers)}/>
+      </View>
     )
   }
 }

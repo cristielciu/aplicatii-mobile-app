@@ -3,7 +3,8 @@ import {
   Text,
   View,
   ListView,
-  Image
+  Image,
+  ScrollView
 } from 'react-native';
 import { connect } from 'react-redux';
 
@@ -15,8 +16,12 @@ class ProductList extends Component {
   renderList() {
     return this.props.products.map((product) => {
       return (
-        <View key={product.name} style={{alignItems: 'center', flex: 1}}>
-        <Text>{product.name}</Text>
+        <View key={product.name} style={{alignItems: 'center'}}>
+        <Text style={{
+          color: '#8c8c8c',
+          fontWeight: 'bold',
+          fontSize: 20,
+        }}>{product.name}</Text>
         <Image
          style={{width: 100 , height: 100}}
           source={{uri: product.image}}
@@ -30,9 +35,9 @@ class ProductList extends Component {
 
   render() {
     return (
-      <View style={{flex: 1}}>
+      <ScrollView style={{flex: 1}}>
         {this.renderList()}
-      </View>
+      </ScrollView>
     )
   }
 }
