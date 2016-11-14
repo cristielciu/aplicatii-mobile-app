@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
+import App from './components/app';
 import {
   Text,
   View
@@ -11,7 +12,7 @@ export default class Root extends Component {
     return (
       <Provider store={this.props}>
         <View style={{flex: 1}}>
-         <Text>Blah blah blah</Text>
+         <App />
         </View>
       </Provider>
     )
