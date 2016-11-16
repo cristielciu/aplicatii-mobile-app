@@ -14,23 +14,32 @@ class ProductList extends Component {
   }
 
   renderList() {
-    return this.props.products.map((product) => {
-      return (
-        <View key={product.name} style={{alignItems: 'center'}}>
-        <Text style={{
-          color: '#8c8c8c',
-          fontWeight: 'bold',
-          fontSize: 20,
-        }}>{product.name}</Text>
-        <Image
-         style={{width: 100 , height: 100}}
-          source={{uri: product.image}}
-        />
-        <Text>{product.description}</Text>
-        <Text style={{color: 'red'}}>{product.price}</Text>
-        </View>
-      );
-    });
+
+    {console.log('NUUUUU', this.props.products);}
+    this.props.products.then((products) => function() {
+      {console.log("DAA", products);}
+    })
+    return (
+      <Text>Da</Text>
+      // <Text>{this.props.products.length} =>[{this.props.products}]</Text>
+    );
+    // return this.props.products.map((product) => {
+    //   return (
+    //     <View key={product.name} style={{alignItems: 'center'}}>
+    //     <Text style={{
+    //       color: '#8c8c8c',
+    //       fontWeight: 'bold',
+    //       fontSize: 20,
+    //     }}>{product.name}</Text>
+    //     <Image
+    //      style={{width: 100 , height: 100}}
+    //       source={{uri: product.image}}
+    //     />
+    //     <Text>{product.description}</Text>
+    //     <Text style={{color: 'red'}}>{product.price}</Text>
+    //     </View>
+    //   );
+    // });
   }
 
   render() {
