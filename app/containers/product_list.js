@@ -4,18 +4,29 @@ import {
   View,
   ListView,
   Image,
-  ScrollView
+  ScrollView,
+  TouchableOpacity
 } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchProducts } from '../actions/index';
+import App from '../components/app';
+import { createStore, applyMiddleware } from 'redux';
+import reducers from '../reducers';
+const createStoreWithMiddleware = applyMiddleware()(createStore);
 
 class ProductList extends Component {
    constructor(props) {
     super(props);
     this.state = {
-        products: []
+        products: [],
+        logout: false
     };
+    this.logout = this.logout.bind(this);
+  }
+
+  logout(){
+    this.setState({logout: true});
   }
 
   componentDidMount() {
@@ -54,12 +65,25 @@ class ProductList extends Component {
     });
   }
   render() {
-    console.log('State', this.state);
-    return (
-      <ScrollView style={{flex: 1}}>
-        {this.renderLst()}
-      </ScrollView>
-    )
+    // console.log('State', this.state);
+    if(this.state.logout == false) {
+      return (
+        <View>
+          <TouchableOpacity onPress={this.logout}>
+            <Text>
+              Logout
+            </Text>
+          </TouchableOpacity>
+          <ScrollView style={{flex: 1}}>
+            {this.renderLst()}
+          </ScrollView>
+        </View>
+      )
+    } else {
+      return (
+        <App store={createStoreWithMiddleware(reducers)}/>
+      )
+    }
   }
 }
 

@@ -6,3 +6,5 @@ android/.gradle
 .watchmanconfig
 android/app
 android/build
+.tags
+.tags1
